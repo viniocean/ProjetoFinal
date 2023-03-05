@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  <title>Harmonia</title>
+</head>
+
+<style>
+  body {
+
+
+    font-family: 'Lora', serif;
+
+  }
+
+  .ff {
+    height: 500px;
+
+  }
+
+  .carousel-item {
+    width: 100%;
+
+  }
+
+  @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+  #team {
+    background: #eee !important;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: #108d6f;
+    border-color: #108d6f;
+    box-shadow: none;
+    outline: none;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background-color: #007b5e;
+    border-color: #007b5e;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+  }
+
+  #team .card {
+    border: none;
+    background: #ffffff;
+  }
+
+  .image-flip:hover .backside,
+  .image-flip.hover .backside {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    border-radius: .25rem;
+  }
+
+  .image-flip:hover .frontside,
+  .image-flip.hover .frontside {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+
+  .mainflip {
+    -webkit-transition: 1s;
+    -webkit-transform-style: preserve-3d;
+    -ms-transition: 1s;
+    -moz-transition: 1s;
+    -moz-transform: perspective(1000px);
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transition: 1s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  .frontside {
+    position: relative;
+    -webkit-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    z-index: 2;
+    margin-bottom: 30px;
+  }
+
+  .backside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+    -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+    box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+  }
+
+  .frontside,
+  .backside {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transition: 1s;
+    -moz-transform-style: preserve-3d;
+    -o-transition: 1s;
+    -o-transform-style: preserve-3d;
+    -ms-transition: 1s;
+    -ms-transform-style: preserve-3d;
+    transition: 1s;
+    transform-style: preserve-3d;
+  }
+
+  .frontside .card,
+  .backside .card {
+    min-height: 312px;
+  }
+
+  .backside .card a {
+    font-size: 18px;
+    color: #007b5e !important;
+  }
+
+  .frontside .card .card-title,
+  .backside .card .card-title {
+    color: #007b5e !important;
+  }
+
+  .frontside .card .card-body img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
+  .thm-container {
+    width: 100%;
+    max-width: 1200px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .contact-form-content {
+    background: #F5F6FA;
+    padding: 80px 0;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .thm-container .title {
+    margin-bottom: 50px;
+  }
+
+  .thm-container .title span {
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    color: #007b5e;
+  }
+
+  .thm-container .title h2 {
+    color: #212121;
+    font-size: 60px;
+    line-height: 60px;
+    font-weight: bold;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 68px;
+    border-radius: 35px;
+    background: #fff;
+    color: #757575;
+    font-size: 16px;
+    padding-left: 50px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .contact-form textarea {
+    height: 182px;
+    padding-top: 20px;
+  }
+
+  .thm-btn {
+    border: none;
+    outline: none;
+    display: inline-block;
+    vertical-align: middle;
+    background: #007b5e;
+    color: #212121;
+    border-radius: 35px;
+    font-family: 'Rubik';
+    font-weight: 500;
+    font-size: 16px;
+    padding: 18px 69px;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+  }
+
+  .contact-info {
+    margin-left: -30px;
+    border: 2px solid #EBEDF4;
+    padding-top: 75px;
+    padding-bottom: 80px;
+  }
+
+  .single-contact-info h4 {
+    color: #212121;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .contact-info .social a {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 18px;
+    line-height: 59px;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 10px;
+    display: inline-block;
+    font-family: FontAwesome;
+    margin: 5px;
+  }
+
+  .contact-info .social a.fa-twitter {
+    background: #007b5e;
+  }
+
+  .contact-info .social a.fa-pinterest {
+    background: #212121;
+  }
+
+  .contact-info .social a.fa-facebook-f {
+    background: #2884C6;
+  }
+
+  .contact-info .social a.fa-youtube {
+    background: #FF4328;
+  }
+</style>
+
+
+
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="#">
+        <img src="img/logo.png" alt="Logo" class="logo-img" style="width: 55px; padding-right: 10px;">
+        Harmonia
+      </a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active text-light" aria-current="page" href="#">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">Sobre Nós</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">Planos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid my-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="img/img_po.jpg" class="d-block w-100 img-fluid" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="img/Memorial-Parque-Itapevi-Foto-Celio-Junior-1280x720.jpg" class="d-block w-100 img-fluid"
+                alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="img/2022-01-tipos-de-cemiterios-1280x720.jpg" class="d-block w-100 img-fluid" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+          </button>
+        </div>
+        </button>
+      </div>
+
+
+      <section id="team" class="pb-5">
+        <div class="container">
+          <h5 class="section-title h1">Quem Somos</h5>
+          <div class="row">
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="col">
+                <div class="card h-100 bg-dark text-light">
+                  <img src="img/TIPOS-DE-CEMITERIOS-vertical.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Missão</h5>
+                    <p class="card-text"> A nossa missão é garantir a dignidade, transparência, ética e inovação em
+                      nossos
+                      serviços, sempre assegurando de
+                      forma respeitosa e digna todo o processo lutoso dos parentes e amigos, que ao prestar a sua
+                      homenagem,
+                      possa
+                      faze-la
+                      de forma digna, confortável e com total privacidade. O compromisso que assumimos com nossos
+                      clientes é
+                      de
+                      servirmos
+                      com honestidade, sensibilidade e competência, garantindo também o acesso digno nos contextos
+                      culturais e
+                      religiosos. </p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted"></small>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100 bg-dark text-light">
+                  <img src="img/2020-03-xx-sepultamento-e-enterro-802x506.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Visão</h5>
+                    <p class="card-text">Manter o crescimento de forma sustentável, sendo reconhecido nacionalmente e
+                      internacionalmente, como uma empresa de
+                      excelência em serviços póstumos, e inovação dos serviços e produtos com objetivo de honrar
+                      histórias de
+                      vidas
+                      mantendo-se na vanguarda do setor no vale dos sinos.</p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted"></small>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100 bg-dark text-light">
+                  <img src="img/flores.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Valores</h5>
+                    <p class="card-text">União, integração e trabalho em equipe;<br>
+                      Respeito a vida e a dignidade humana;<br>
+                      Agir com honestidade e franqueza com seus clientes;<br>
+                      Responsabilidade com o meio ambiente e com a segurança de seus funcionários;<br>
+                      Respeito e zelo com toda a legislação vigente.</p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted"></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+
+
+            <section id="team" class="pb-5">
+              <div class="container">
+                <h5 class="section-title h1">PLANOS</h5>
+                <div class="row">
+                  <!-- Team member -->
+                  <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                      <div class="mainflip">
+                        <div class="frontside">
+                          <div class="card">
+                            <div class="card-body text-center">
+                              <p><img class=" img-fluid" src="img/bronze.jpeg" alt="card image"></p>
+                              <h4 class="card-title">Bronze</h4>
+                              <p class="card-text">No plano bronze existe uma taxa de R$ 9,99 para o titular. Já para os
+                                dependentes há um valor proporcional a ser pago de acordo com a faixa de idade. As
+                                tarifas
+                                variam entre R$ 6,99 e R$ 47,90.
+                              </p>
+                              <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="backside">
+                          <div class="card">
+                            <div class="card-body text-center mt-4">
+                              <h4 class="card-title">Bronze</h4>
+                              <p class="card-text">Nessa modalidade, as famílias daqueles que estiverem cobertos
+                                contarão com:
+                                <br>
+                                <br>
+
+
+                                urna varão sem visor; <br>
+                                remoção do corpo; <br>
+                                ornamentação; <br>
+                                véu mortuário; <br>
+                                liberação do corpo junto a hospitais ou IML; <br>
+                                1 coroa de flores; <br>
+                                aluguel de capela para velório; <br>
+                                aluguel de sepultura rasa. <br>
+                              </p>
+                              <ul class="list-inline">
+                                <li class="list-inline-item">
+                                  <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-facebook"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-twitter"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-skype"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-google"></i>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- ./Team member -->
+                  <!-- Team member -->
+                  <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                      <div class="mainflip">
+                        <div class="frontside">
+                          <div class="card">
+                            <div class="card-body text-center">
+                              <p><img class=" img-fluid" src="img/trabalho_prata.jpeg" alt="card image"></p>
+                              <h4 class="card-title">Prata</h4>
+                              <p class="card-text">Para o plano prata é cobrada uma taxa mensal de R$ 10,99 para o
+                                titular. No
+                                caso dos dependentes há uma variação, que vai de até R$ 7,99 até R$ 50,65, que varia de
+                                acordo
+                                com a idade.
+                              </p>
+                              <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="backside">
+                          <div class="card">
+                            <div class="card-body text-center mt-4">
+                              <h4 class="card-title">Prata</h4>
+                              <p class="card-text">Estão inclusos no plano: <br>
+                                <br>
+
+                                urna varão com visor; <br>
+                                remoção do corpo; <br>
+                                ornamentação; <br>
+                                véu mortuário; <br>
+                                liberação do corpo junto a hospitais ou IML; <br>
+                                1 coroa de flores; <br>
+                                aluguel de capela para velório; <br>
+                                aluguel de sepultura rasa. <br>
+                              </p>
+                              <ul class="list-inline">
+                                <li class="list-inline-item">
+                                  <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-facebook"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-twitter"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-skype"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-google"></i>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- ./Team member -->
+                  <!-- Team member -->
+                  <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                      <div class="mainflip">
+                        <div class="frontside">
+                          <div class="card">
+                            <div class="card-body text-center">
+                              <p><img class=" img-fluid" src="img/ouro_2.jpeg" alt="card image"></p>
+                              <h4 class="card-title">Ouro</h4>
+                              <p class="card-text">O plano ouro já é considerado mais luxuoso que os anteriores. As
+                                taxas a
+                                serem pagas são de R$ 18,99 para o titular e uma tarifa que varia entre R$ 13,99 e R$
+                                62,99
+                                para cada dependente.
+
+                              </p>
+                              <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="backside">
+                          <div class="card">
+                            <div class="card-body text-center mt-4">
+                              <h4 class="card-title">Ouro</h4>
+                              <p class="card-text">As famílias de falecidos que tiverem cobertura do plano ouro terão o
+                                amparo
+                                de: <br>
+                                <br>
+                                urna varão com visor luxo; <br>
+                                remoção do corpo; <br>
+                                ornamentação; <br>
+                                véu mortuário; <br>
+                                liberação do corpo junto a hospitais ou IML; <br>
+                                1 coroa de flores; <br>
+                                aluguel de capela para velório; <br>
+                                aluguel de sepultura gaveta. <br>
+                              </p>
+                              <ul class="list-inline">
+                                <li class="list-inline-item">
+                                  <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-facebook"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-twitter"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-skype"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-google"></i>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- ./Team member -->
+
+                </div>
+              </div>
+            </section>
+            <!-- Team -->
+            <div class="thm-container">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="contact-form-content">
+                    <div class="title">
+                      <span>Preencha para que um de nossos consultores entre em contato.</span>
+                      <h2>Oferecemos suporte para homenagem ao ente querido neste momento delicado. </h2>
+                    </div><!-- /.title -->
+                    <form action="inc/sendemail.php" class="contact-form" novalidate="novalidate">
+                      <input type="text" name="name" placeholder="Seu nome completo!">
+                      <input type="text" name="email" placeholder="Seu endereço de e-mail">
+                      <textarea name="message" placeholder="Escreva sua mensagem!"></textarea>
+                      <button type="submit" class="thm-btn dark-bg text-light">Envie agora!</button>
+                      <div class="form-result"></div><!-- /.form-result -->
+                    </form>
+                  </div><!-- /.contact-form-content -->
+                </div><!-- /.col-md-8 -->
+                <div class="col-md-4">
+                  <div class="contact-info text-center">
+                    <div class="title text-center">
+                      <span>Detalhes.</span>
+                      <h2>Informações de Contato</h2>
+                    </div><!-- /.title -->
+                    <div class="single-contact-info">
+                      <h4>A Funerária Harmonia 24h disponibiliza atendimento de assistência em cemitérios públicos e
+                        particulares. Fornecemos coroas, sepultamento com ou sem velório e ajuda com a documentação.
+                        Caso seu desejo seja pela cremação, também temos vínculo com os melhores crematórios da cidade.
+                        Quando precisar de uma funerária no RJ, entre em contato conosco!</h4>
+                    </div><!-- /.single-contact-info -->
+                    <div class="single-contact-info">
+                    </div><!-- /.single-contact-info -->
+                    <div class="single-contact-info">>
+                    </div><!-- /.single-contact-info -->
+                    <div class="single-contact-info">
+                      <h4>Siga-nos.</h4>
+                      <div class="social">
+                        <a href="#" class="fab fa-twitter hvr-pulse"></a><!--  
+                                  --><a href="#" class="fab fa-pinterest hvr-pulse"></a><!--  
+                                  --><a href="#" class="fab fa-facebook-f hvr-pulse"></a><!--  
+                                  --><a href="#" class="fab fa-youtube hvr-pulse"></a>
+                      </div><!-- /.social -->
+                    </div><!-- /.single-contact-info -->
+                  </div><!-- /.contact-info -->
+                </div><!-- /.col-md-4 -->
+              </div><!-- /.row -->
+            </div>
+
+
+
+            <footer class="bg-dark text-light">
+              <div class="container py-4">
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <h5>Entre em contato</h5>
+                    <p class="mb-0">Telefone: (11) 98333-4947</p>
+                    <p>E-mail: harmonia@contato.com</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-dark text-light py-3">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12 text-center">
+                      <p class="mb-0">Todos os direitos reservados</p>
+                      <p>&copy; 2023 Harmonia</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </footer>
+
+            <script>
+              $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                  $('.bg-info').fadeIn();
+                } else {
+                  $('.bg-info').fadeOut();
+                }
+              });
+            </script>
+
+
+            <div id="root"></div>
+
+
+</body>
+
+</html>
